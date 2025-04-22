@@ -1,8 +1,11 @@
 package com.redis.pricecompareredis.service;
 
+import com.redis.pricecompareredis.vo.Product;
+
 import java.util.Set;
 
 public interface LowestPriceService {
 
-    public Set getZsetValue(String key);
+    Set getZsetProduct(String key);
+    int setNewProduct(Product prod);
 }

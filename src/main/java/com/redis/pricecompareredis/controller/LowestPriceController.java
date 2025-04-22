@@ -1,10 +1,9 @@
 package com.redis.pricecompareredis.controller;
 
 import com.redis.pricecompareredis.service.LowestPriceServiceImpl;
+import com.redis.pricecompareredis.vo.Product;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
@@ -15,9 +14,14 @@ public class LowestPriceController {
 
     private final LowestPriceServiceImpl lowestPriceService;
 
-
-    @GetMapping("/getZsetValue")
-    public Set GetZsetValue(String key) {
-        return lowestPriceService.getZsetValue(key);
+    @GetMapping("/product")
+    public Set GetZsetProduct(String key) {
+        return lowestPriceService.getZsetProduct(key);
     }
+
+    @PutMapping("/product")
+    public int SetNewProduct(@RequestBody Product prod) {
+        return lowestPriceService.setNewProduct(prod);
+    }
+
 }
